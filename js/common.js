@@ -1,3 +1,42 @@
+/* =====================================================================
+   common.js  -  Helper functions shared by every page
+   ---------------------------------------------------------------------
+   Loaded after data.js and before each page's own script:
+     <script src="js/data.js"></script>
+     <script src="js/common.js"></script>
+     <script src="js/admin.js"></script>
+   An external .js file contains only JavaScript, no <script> tags.
+
+   Dashboard pages (admin, doctor, receptionist, patient) define
+     const currentUser = getLoggedInUser("RoleName");
+   before they call the functions in the "who is logged in", "activity
+   log" and "profile" sections below.
+
+   TEAM RULES (read before you edit)
+    1. The file is split into 4 blocks, one per person.
+    2. Write ONLY inside YOUR OWN block (between your START and END lines).
+    3. Never touch another person's block. Ask the owner or open an Issue.
+    4. Pull the latest main before you start, and keep changes small.
+    5. Keep the block ORDER: Shohan, Saad, Alif, Najir.
+    6. Function names must be UNIQUE in the whole project. Two functions
+       with the same name will silently overwrite each other.
+
+   Blocks:
+     SHOHAN = show section, errors, messages, search, array helpers,
+              activity log and notifications
+     SAAD   = validation helpers, profile
+     ALIF   = who is logged in, queue and appointment status
+     NAJIR  = date helpers, slot helpers, booking date check
+   ===================================================================== */
+
+// >>> SHOHAN START (Sections, Errors, Messages, Search, Array helpers, Log, Notifications) >>>
+
+/* ---------------------------------------------------------------------
+   1. SHOW ONE SECTION AT A TIME
+   Each dashboard page declares an array called "sections" with the ids
+   of its sections. Clicking a menu button calls showSection("id").
+   We change the CSS with the DOM:  element.style.display = "block"
+   --------------------------------------------------------------------- */
 function showSection(sectionId) {
   for (let i = 0; i < sections.length; i++) {
     let section = document.getElementById(sections[i]);
@@ -13,6 +52,12 @@ function showSection(sectionId) {
   }
 }
 
+/* ---------------------------------------------------------------------
+   2. SHOWING AND CLEARING ERRORS
+   Every field has a <span class="error" id="fieldIdError"></span>
+   next to it. We write the message with innerHTML and colour the
+   field's border red with element.style.
+   --------------------------------------------------------------------- */
 function showError(fieldId, message) {
   document.getElementById(fieldId + 'Error').innerHTML = message;
 
@@ -39,6 +84,10 @@ function clearErrors(fieldIds) {
   }
 }
 
+/* ---------------------------------------------------------------------
+   3. MESSAGE BOXES
+   type is "success", "error" or "info" (these are CSS classes)
+   --------------------------------------------------------------------- */
 function showMessage(boxId, text, type) {
   let box = document.getElementById(boxId);
   box.innerHTML = text;
@@ -50,9 +99,18 @@ function hideMessage(boxId) {
   document.getElementById(boxId).style.display = 'none';
 }
 
+/* ---------------------------------------------------------------------
+   5. SEARCH HELPER
+   true when "text" contains "keyword", ignoring upper/lower case.
+   Uses the string methods toLowerCase() and indexOf().
+   --------------------------------------------------------------------- */
 function containsText(text, keyword) {
   return String(text).toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
 }
+
+/* ---------------------------------------------------------------------
+   6. ARRAY HELPERS
+   --------------------------------------------------------------------- */
 
 // Finds the position (index) of the object whose id matches, or -1
 function findIndexById(list, id) {
@@ -158,7 +216,6 @@ function appointmentColor(status) {
 
 /* ---------------------------------------------------------------------
    10. ACTIVITY LOG AND NOTIFICATIONS
-   [OWNER: Shohan]
    --------------------------------------------------------------------- */
 
 // Writes one entry into the activity log (the Admin reads it)
@@ -258,3 +315,9 @@ function markAllRead() {
   }
   renderNotifications();
 }
+
+/* ---------------------------------------------------------------------
+   SHOHAN: add your NEW Admin / Home functions below this line
+   --------------------------------------------------------------------- */
+
+// <<< SHOHAN END <<<

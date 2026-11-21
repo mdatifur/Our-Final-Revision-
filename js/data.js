@@ -1,4 +1,50 @@
-// [Shohan] only Shohan edits sampleDate()
+/* =====================================================================
+   data.js  -  Sample data for the whole system
+   ---------------------------------------------------------------------
+   Every list is an ARRAY OF OBJECTS (Lecture 05: "Arrays of objects").
+   Each object groups related values as  name: value  pairs.
+
+   All FICTIONAL data. No real people, phone numbers or medical advice.
+
+   How the lists are linked (by id):
+     users          -> doctorId / patientId point to doctors / patients
+     appointments   -> patientId + doctorId
+     queue          -> appointmentId + patientId + doctorId
+     prescriptions  -> patientId + doctorId
+     medicalRecords -> patientId + doctorId
+
+   IMPORTANT (frontend only):
+   This data lives in the browser's memory. When you reload a page or
+   move to another page, it starts again from these values.
+   When a backend and database are added later, these arrays will be
+   replaced by data that comes from the database.
+
+   TEAM RULES (read before you edit)
+    1. The file is split into 4 blocks, one per person.
+    2. Write ONLY inside YOUR OWN block (between your START and END lines).
+    3. Never touch another person's block. Ask the owner or open an Issue.
+    4. Pull the latest main before you start, and keep changes small.
+    5. Keep the block ORDER: Shohan, Saad, Alif, Najir.
+    6. Names must be UNIQUE in the whole project. Two  let / const  with the
+       same name give an error and break the page.
+    7. If you add a field to a record in your array, tell the people whose
+       pages read that array.
+
+   Blocks:
+     SHOHAN = sampleDate(), hospitalRules, timeSlots, departments,
+              medicines, notifications, activityLog
+     SAAD   = patients, medicalRecords
+     ALIF   = users, doctors, prescriptions
+     NAJIR  = appointments, queue
+   ===================================================================== */
+
+// >>> SHOHAN START (sampleDate, Settings, Departments, Medicines, Notifications, Activity log) >>>
+
+// Gives a date text "YYYY-MM-DD" that is a few days before/after today.
+// The sample dates are made from today's date, so "today's appointments"
+// and "medicines expiring soon" always have something to show.
+//   sampleDate(0) = today,  sampleDate(-30) = 30 days ago,  sampleDate(7) = next week
+// (every block below uses this function, so only Shohan edits it)
 function sampleDate(daysFromToday) {
   let date = new Date();
   date.setDate(date.getDate() + daysFromToday);
@@ -13,8 +59,7 @@ function sampleDate(daysFromToday) {
   return date.getFullYear() + '-' + month + '-' + day;
 }
 
-//  Hospital settings (single object, read with dot notation)
-// [Shohan] only Shohan edits hospitalRules
+// ---------- Hospital settings (single object, read with dot notation) ----------
 let hospitalRules = {
   minutesPerPatient: 10, // used for the ESTIMATED waiting time in the queue tracker
   mediumWorkload: 3, // 3 or 4 appointments today  = Medium workload
@@ -23,7 +68,6 @@ let hospitalRules = {
 };
 
 // Appointment times that can be booked (every 30 minutes)
-// [OWNER: Shohan] only Shohan edits timeSlots
 const timeSlots = [
   '09:00',
   '09:30',
@@ -40,96 +84,7 @@ const timeSlots = [
   '16:30',
 ];
 
-//  Users: everyone who can log in
-// status: "Active"  = can log in
-//         "Pending" = registered, waiting for the admin to approve (doctors, receptionists)
-// doctorId / patientId connect the account to a record in the doctors / patients arrays.
-// [OWNER: Alif] only Alif edits users
-let users = [
-  {
-    id: 'U-001',
-    name: 'Rifat Hasan',
-    username: 'admin',
-    password: 'admin1234',
-    email: 'admin@evercare.demo',
-    phone: '01711000001',
-    role: 'Admin',
-    status: 'Active',
-  },
-
-  {
-    id: 'U-002',
-    name: 'Dr. Arif Rahman',
-    username: 'doctor',
-    password: 'doctor123',
-    email: 'arif@evercare.demo',
-    phone: '01711000002',
-    role: 'Doctor',
-    status: 'Active',
-    doctorId: 'D-101',
-  },
-  {
-    id: 'U-003',
-    name: 'Dr. Nusrat Jahan',
-    username: 'nusrat',
-    password: 'nusrat123',
-    email: 'nusrat@evercare.demo',
-    phone: '01711000003',
-    role: 'Doctor',
-    status: 'Active',
-    doctorId: 'D-102',
-  },
-  {
-    id: 'U-004',
-    name: 'Dr. Imran Chowdhury',
-    username: 'imran',
-    password: 'imran1234',
-    email: 'imran@evercare.demo',
-    phone: '01711000004',
-    role: 'Doctor',
-    status: 'Pending',
-    doctorId: 'D-106',
-  },
-
-  {
-    id: 'U-005',
-    name: 'Sumaiya Khan',
-    username: 'reception',
-    password: 'reception123',
-    email: 'sumaiya@evercare.demo',
-    phone: '01711000005',
-    role: 'Receptionist',
-    status: 'Active',
-    employeeId: 'EMP-2001',
-    shift: 'Morning',
-  },
-
-  {
-    id: 'U-006',
-    name: 'Farhan Kabir',
-    username: 'patient',
-    password: 'patient123',
-    email: 'farhan@mail.com',
-    phone: '01711000101',
-    role: 'Patient',
-    status: 'Active',
-    patientId: 'P-1001',
-  },
-  {
-    id: 'U-007',
-    name: 'Sadia Islam',
-    username: 'sadia',
-    password: 'sadia1234',
-    email: 'sadia@mail.com',
-    phone: '01711000102',
-    role: 'Patient',
-    status: 'Active',
-    patientId: 'P-1002',
-  },
-];
-
-//  Departments
-// [OWNER: Shohan] only Shohan edits departments
+// ---------- Departments ----------
 let departments = [
   { id: 'DEP-01', name: 'Cardiology' },
   { id: 'DEP-02', name: 'Pediatrics' },
@@ -139,9 +94,8 @@ let departments = [
   { id: 'DEP-06', name: 'General Medicine' },
 ];
 
-//  Medicines in the hospital pharmacy (used by Admin)
+// ---------- Medicines in the hospital pharmacy (used by Admin) ----------
 // quantity = units in stock now, minStock = reorder level, expiry = "YYYY-MM-DD"
-// [OWNER: Shohan] only Shohan edits medicines
 let medicines = [
   {
     id: 'M-001',
@@ -209,9 +163,8 @@ let medicines = [
   },
 ];
 
-//  Notifications (used by every role)
+// ---------- Notifications (used by every role) ----------
 // userId says who the notification is for. read: false = unread.
-// [OWNER: Shohan] only Shohan edits notifications
 let notifications = [
   {
     id: 'N-001',
@@ -306,8 +259,7 @@ let notifications = [
   },
 ];
 
-//  Activity history (used by Admin)
-// [OWNER: Shohan] only Shohan edits activityLog
+// ---------- Activity history (used by Admin) ----------
 let activityLog = [
   {
     time: sampleDate(-3) + ' 09:12',
@@ -347,3 +299,9 @@ let activityLog = [
       'New doctor registration waiting for approval: Dr. Imran Chowdhury',
   },
 ];
+
+// ---------------------------------------------------------------------
+// SHOHAN: add your NEW Admin / Home data below this line
+// ---------------------------------------------------------------------
+
+// <<< SHOHAN END <<<
