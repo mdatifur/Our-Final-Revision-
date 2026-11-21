@@ -347,3 +347,194 @@ let activityLog = [
       'New doctor registration waiting for approval: Dr. Imran Chowdhury',
   },
 ];
+
+// >>> SAAD START (Patients, Medical records) >>>
+
+// ---------- Patients ----------
+let patients = [
+  {
+    id: 'P-1001',
+    name: 'Farhan Kabir',
+    dob: '1995-03-14',
+    gender: 'Male',
+    phone: '01711000101',
+    email: 'farhan@mail.com',
+    address: 'House 12, Road 4, Dhanmondi, Dhaka',
+    bloodGroup: 'O+',
+    emergencyContact: 'Nasrin Kabir - 01811000201',
+    userId: 'U-006',
+  },
+  {
+    id: 'P-1002',
+    name: 'Sadia Islam',
+    dob: '1999-07-22',
+    gender: 'Female',
+    phone: '01711000102',
+    email: 'sadia@mail.com',
+    address: 'Flat 5B, Green Road, Dhaka',
+    bloodGroup: 'A+',
+    emergencyContact: 'Rafiq Islam - 01811000202',
+    userId: 'U-007',
+  },
+  {
+    id: 'P-1003',
+    name: 'Mehedi Hasan',
+    dob: '1988-11-02',
+    gender: 'Male',
+    phone: '01711000103',
+    email: 'mehedi@mail.com',
+    address: 'Station Road, Gazipur',
+    bloodGroup: 'B+',
+    emergencyContact: 'Salma Hasan - 01811000203',
+    userId: '',
+  },
+  {
+    id: 'P-1004',
+    name: 'Tania Akter',
+    dob: '1992-05-30',
+    gender: 'Female',
+    phone: '01711000104',
+    email: 'tania@mail.com',
+    address: 'Uttara Sector 7, Dhaka',
+    bloodGroup: 'AB+',
+    emergencyContact: 'Jahid Akter - 01811000204',
+    userId: '',
+  },
+  {
+    id: 'P-1005',
+    name: 'Rubel Ahmed',
+    dob: '1980-01-19',
+    gender: 'Male',
+    phone: '01711000105',
+    email: 'rubel@mail.com',
+    address: 'Mirpur 10, Dhaka',
+    bloodGroup: 'O-',
+    emergencyContact: 'Lipi Ahmed - 01811000205',
+    userId: '',
+  },
+  {
+    id: 'P-1006',
+    name: 'Nabila Chowdhury',
+    dob: '2015-09-09',
+    gender: 'Female',
+    phone: '01711000106',
+    email: 'nabila@mail.com',
+    address: 'Banani, Dhaka',
+    bloodGroup: 'A-',
+    emergencyContact: 'Kabir Chowdhury - 01811000206',
+    userId: '',
+  },
+];
+
+// ---------- Medical records: diagnoses, lab reports and follow-up visits ----------
+// type: "Diagnosis" | "Lab Report" | "Follow-up"
+// (Appointments and prescriptions are read from their own arrays for the timeline.)
+let medicalRecords = [
+  {
+    id: 'MR-001',
+    patientId: 'P-1001',
+    doctorId: 'D-101',
+    date: sampleDate(-30),
+    type: 'Diagnosis',
+    title: 'Mild high blood pressure',
+    details:
+      'Blood pressure slightly above normal at the visit. Lifestyle advice given.',
+  },
+  {
+    id: 'MR-002',
+    patientId: 'P-1001',
+    doctorId: 'D-101',
+    date: sampleDate(-29),
+    type: 'Lab Report',
+    title: 'Lipid profile',
+    details: 'Result: within the normal range (sample result).',
+  },
+  {
+    id: 'MR-003',
+    patientId: 'P-1001',
+    doctorId: 'D-101',
+    date: sampleDate(-29),
+    type: 'Lab Report',
+    title: 'ECG',
+    details: 'Result: normal rhythm (sample result).',
+  },
+  {
+    id: 'MR-004',
+    patientId: 'P-1001',
+    doctorId: 'D-104',
+    date: sampleDate(-75),
+    type: 'Diagnosis',
+    title: 'Allergic skin rash',
+    details: 'Rash on both arms after a new soap. Allergy tablets prescribed.',
+  },
+  {
+    id: 'MR-005',
+    patientId: 'P-1001',
+    doctorId: 'D-104',
+    date: sampleDate(-74),
+    type: 'Lab Report',
+    title: 'Complete blood count',
+    details: 'Result: all values normal (sample result).',
+  },
+  {
+    id: 'MR-006',
+    patientId: 'P-1001',
+    doctorId: 'D-101',
+    date: sampleDate(7),
+    type: 'Follow-up',
+    title: 'Follow-up: blood pressure check',
+    details: 'Scheduled follow-up visit with Dr. Arif Rahman.',
+  },
+  {
+    id: 'MR-007',
+    patientId: 'P-1002',
+    doctorId: 'D-103',
+    date: sampleDate(-20),
+    type: 'Diagnosis',
+    title: 'Migraine',
+    details: 'Recurring headaches on one side of the head.',
+  },
+  {
+    id: 'MR-008',
+    patientId: 'P-1002',
+    doctorId: 'D-103',
+    date: sampleDate(-19),
+    type: 'Lab Report',
+    title: 'MRI Brain',
+    details: 'Result: no abnormality seen (sample result).',
+  },
+  {
+    id: 'MR-009',
+    patientId: 'P-1002',
+    doctorId: 'D-103',
+    date: sampleDate(3),
+    type: 'Follow-up',
+    title: 'Follow-up: migraine review',
+    details: 'Scheduled follow-up visit with Dr. Kamal Hossain.',
+  },
+  {
+    id: 'MR-010',
+    patientId: 'P-1003',
+    doctorId: 'D-101',
+    date: sampleDate(0),
+    type: 'Diagnosis',
+    title: 'Chest discomfort',
+    details:
+      'No serious cause found today. Advised to rest and return if pain continues.',
+  },
+  {
+    id: 'MR-011',
+    patientId: 'P-1006',
+    doctorId: 'D-102',
+    date: sampleDate(0),
+    type: 'Diagnosis',
+    title: 'Common cold',
+    details: 'Mild fever and cough for two days.',
+  },
+];
+
+// ---------------------------------------------------------------------
+// SAAD: add your NEW Patient / Register data below this line
+// ---------------------------------------------------------------------
+
+// <<< SAAD END <<<
