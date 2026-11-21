@@ -742,3 +742,203 @@ a:hover {
 /*SHOHAN: add your NEW Admin / Home code below this line */
 
 /* <<< SHOHAN END <<< */
+
+/* >>> SAAD START (Forms + Register + Patient) >>> */
+
+/* ---------------------------------------------------------------------
+   4. FORMS (shared by all pages; tell the others before big changes)
+   <fieldset>, <legend> and a <table> to line up labels and fields
+   --------------------------------------------------------------------- */
+fieldset {
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  padding: 12px 16px 16px 16px;
+  margin-bottom: 16px;
+}
+
+legend {
+  font-weight: bold;
+  color: #00796b;
+  padding: 0 8px;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}
+
+.form-table td:first-child {
+  width: 35%;
+  padding-top: 12px;
+}
+
+label {
+  font-weight: 600;
+  color: #444444;
+}
+
+.option-label {
+  font-weight: normal;
+  margin-right: 12px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+input[type='time'],
+input[type='tel'],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #26a69a;
+  border-color: #26a69a;
+}
+
+input[readonly] {
+  background-color: #eceff1;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin-right: 4px;
+  accent-color: #00897b;
+}
+
+/* Red error text shown next to a field by JavaScript validation */
+.error {
+  display: block;
+  color: #c62828;
+  font-size: 0.85rem;
+  min-height: 1em;
+}
+
+/* Forms on small screens: label above the field */
+@media (max-width: 600px) {
+  .form-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-table td:first-child {
+    width: 100%;
+    padding-top: 8px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   9c. REGISTER PAGE
+   --------------------------------------------------------------------- */
+/* The register box: centred, never wider than the screen
+   (.auth-box is shared with the login page, which is in Alif's block) */
+.auth-box.wide {
+  max-width: 720px;
+}
+
+/* Registration: choose a type of user first, then see its fields */
+.form-body,
+.type-fields {
+  display: none;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.type-option {
+  display: block;
+  border: 2px solid #b2dfdb;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  font-weight: normal;
+  background-color: white;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
+}
+
+.type-option:hover {
+  border-color: #26a69a;
+}
+
+.type-option strong {
+  font-size: 1.05rem;
+  color: #0d2b45;
+}
+
+.type-option .hint {
+  display: block;
+  margin-top: 4px;
+}
+
+/* Added by JavaScript to the chosen card */
+.type-option.selected {
+  border-color: #00897b;
+  background-color: #e0f2f1;
+}
+
+/* ---------------------------------------------------------------------
+   11b. PATIENT: DOCTOR CARDS
+   --------------------------------------------------------------------- */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.doctor-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 6px solid #00897b;
+  transition: transform 0.3s;
+}
+
+.doctor-card:hover {
+  transform: scale(1.02);
+}
+
+.doctor-card h4 {
+  color: #0d2b45;
+  font-size: 1.05rem;
+}
+
+.doctor-card p {
+  font-size: 0.9rem;
+  margin: 2px 0;
+}
+
+.doctor-card .btn {
+  margin: 8px 6px 0 0;
+}
+
+/* ---------------------------------------------------------------------
+   SAAD: add your NEW Patient / Register code below this line
+   --------------------------------------------------------------------- */
+
+/* <<< SAAD END <<< */
